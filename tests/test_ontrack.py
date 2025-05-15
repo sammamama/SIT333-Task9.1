@@ -12,6 +12,14 @@ class TestOnTrack(unittest.TestCase):
             self.assertIn("title", task)
             self.assertIn("submission_date", task)
             self.assertIn("status", task)
+    
+    def test_get_task_inbox_wrong_status(self):
+        student_id = "s1234567"
+        tasks = get_task_inbox(student_id)
+        
+        for task in tasks:
+            self.assertEqual(task["status"], "Pending") 
+
 
 if __name__ == "__main__":
     unittest.main()
